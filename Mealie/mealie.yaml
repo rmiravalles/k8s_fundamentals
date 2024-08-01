@@ -9,11 +9,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-mealie
+      app: mealie
   template:
     metadata:
       labels:
-        app: nginx-mealie
+        app: mealie
     spec:
       containers:
         - image: ghcr.io/mealie-recipes/mealie:v1.3.2
