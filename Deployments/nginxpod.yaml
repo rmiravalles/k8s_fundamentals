@@ -11,6 +11,13 @@ spec:
     volumeMounts:
       - mountPath: /scratch
         name: scratch-volume
+  - name: busybox
+    image: busybox
+    command: ["/bin/sh", "-c"]
+    args: ["sleep 1000"]
+    volumeMounts:
+      - mountPath: /scratch
+        name: scratch-volume
   volumes: 
     - name: scratch-volume
       emptyDir:
