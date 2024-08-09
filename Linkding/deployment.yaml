@@ -6,7 +6,7 @@ metadata:
   labels:
     app: linkding
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: linkding
@@ -17,6 +17,13 @@ spec:
     spec:
       containers:
       - name: linkding
-        image: sissbruecker/linkding:1.29.0
+        image: sissbruecker/linkding:latest
         ports:
-        - containerPort: 8000
+        - containerPort: 9090
+        volumeMounts:
+          - mountPath: /etc/linkding/data
+            name: linkding-data
+      volumes:
+        - name: linkding-data
+          persistentVolumeClaim:
+            claimName: linkding-data
