@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: linkding
+  namespace: linkding
+  labels:
+    app: linkding
 spec:
   replicas: 2
   selector:
@@ -14,10 +17,6 @@ spec:
     spec:
       containers:
       - name: linkding
-        image: sissbruecker/linkding:v1.29.0
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        image: sissbruecker/linkding:1.29.0
         ports:
-        - containerPort: 6000
+        - containerPort: 8000
