@@ -1,8 +1,20 @@
 # Kubernetes Fundamentals
 
+- [Introduction](#introduction)
+  - [Lab setup](#lab-setup)
+- [Mealie](#mealie)
+  - [Notes](#notes)
+- [Homarr](#homarr)
+  - [Installing Homarr using Helm](#installing-homarr-from-a-helm-chart)
+- [Monitoring](#monitoring)
+- [Linkding](#linkding)
+  - [Notes](#notes-1)
+
+## Introduction
+
 This repository contains my studies and experiments on Kubernetes. Most of the notes and exercises here were taken from [Mischa van den Burg's](https://mischavandenburg.substack.com/) Kubernetes Fundamentals course.
 
-## Lab setup
+### Lab setup
 
 For these labs, I'm using [Rancher Desktop](https://rancherdesktop.io/), running on Ubuntu 24.04. I'm also using [k9s](https://k9scli.io/), a super cool terminal based UI. Try it out!
 
@@ -34,6 +46,8 @@ helm install homarr oben01/homarr --namespace homarr --create-namespace
 The third line will tell Helm to install the `homarr` release in the `homarr` Helm chart, that lives in the `oben01` repository, and to do it in the `homarr` namespace. If this namespace doesn't exist yet, it should create it.
 
 ## Monitoring
+
+To install the monitoring stack, we also use Helm.We'll use the [Kube Prometheus Stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 ## Linkding
 
