@@ -41,8 +41,21 @@ Following up on Mischa's Kubernetes Fundamentals course, I'll try this experimen
 
 The original repository: [Linkding](https://github.com/sissbruecker/linkding)
 
+The Linkding project is comprised of the following Kubernetes objects:
+
+- [Namespace](/Linkding/linkdingns.yaml)
+- [Deployment](/Linkding/deployment.yaml)
+- [Service](/Linkding/linkdingsvc.yaml)
+- [Persistent Volume Claim](/Linkding/linkdingstorage.yaml)
+
 ![app running on localhost port 9090](/Linkding/Assets/localhost01.png)
 
 ### Notes
 
-For my first deployment, I chose port `6000`. Apparently, this port is considered unsafe by the browser. I changed it to `9090`, like in the original guidelines.
+- For my first deployment, I chose port `6000`. Apparently, this port is considered unsafe by the browser. I changed it to `9090`, like in the original guidelines.
+- Before logging in for the first time, you need to setup the username and password. For that, you need to connect to the container and execute a file. This is how I did it:
+
+`kubectl exec -it [linkding-pod] -- python manage.py createsuperuser --username=[username] --email=[email]`
+
+- You'll be prompted for a password.
+- In the [Deployment](/Linkding/deployment.yaml), I used `/etc/linkding/data` as the `mountPath`. It works, apparently.
