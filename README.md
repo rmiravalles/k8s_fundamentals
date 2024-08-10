@@ -1,1 +1,48 @@
-# k8s_fundamentals
+# Kubernetes Fundamentals
+
+This repository contains my studies and experiments on Kubernetes. Most of the notes and exercises here were taken from [Mischa van den Burg's](https://mischavandenburg.substack.com/) Kubernetes Fundamentals course.
+
+## Lab setup
+
+For these labs, I'm using [Rancher Desktop](https://rancherdesktop.io/), running on Ubuntu 24.04. I'm also using [k9s](https://k9scli.io/), a super cool terminal based UI. Try it out!
+
+## Mealie
+
+The first project is to run [Mealie](https://github.com/mealie-recipes/mealie) in Kubernetes. Mealie is a self-hosted recipe manager. The Mealie project is comprised of the following Kubernetes objects:
+
+- [Namespace](/Mealie/mealiens.yaml)
+- [Deployment](/Mealie/mealie.yaml)
+- [Service](/Mealie/service.yaml)
+- [Persistent Volume Claim](/Mealie/storage.yaml)
+
+### Notes
+
+- Even though Rancher Desktop offers the possibility of deploying a Service of the LoadBalancer type, I couldn't reach the Mealie application using the External IP. Something to be investigated.
+
+## Homarr
+
+[Homarr](https://homarr.dev/) is the second application we installed in the course. For this project, we used [Helm](https://helm.sh/), a package manager for Kubernetes.
+
+### Installing Homarr from a Helm Chart
+
+```bash
+helm repo add oben01 https://oben01.github.io/charts/
+helm repo update
+helm install homarr oben01/homarr --namespace homarr --create-namespace
+```
+
+The third line will tell Helm to install the `homarr` release in the `homarr` Helm chart, that lives in the `oben01` repository, and to do it in the `homarr` namespace. If this namespace doesn't exist yet, it should create it.
+
+## Monitoring
+
+## Linkding
+
+Following up on Mischa's Kubernetes Fundamentals course, I'll try this experiment he suggested. I'll deploy Linkding, a self-hosted bookmark manager.
+
+The original repository: [Linkding](https://github.com/sissbruecker/linkding)
+
+![app running on localhost port 9090](/Linkding/Assets/localhost01.png)
+
+### Notes
+
+For my first deployment, I chose port `6000`. Apparently, this port is considered unsafe by the browser. I changed it to `9090`, like in the original guidelines.
