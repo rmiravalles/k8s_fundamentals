@@ -7,6 +7,8 @@
 - [Homarr](#homarr)
   - [Installing Homarr using Helm](#installing-homarr-from-a-helm-chart)
 - [Monitoring](#monitoring)
+  - [Add the Helm repository](#add-the-helm-repository)
+  - [Install the Helm Chart](#install-the-helm-chart)
 - [Linkding](#linkding)
   - [Notes](#notes-1)
 
@@ -47,7 +49,18 @@ The third line will tell Helm to install the `homarr` release in the `homarr` He
 
 ## Monitoring
 
-To install the monitoring stack, we also use Helm.We'll use the [Kube Prometheus Stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+To install the monitoring stack, we also use Helm. We'll use the [Kube Prometheus Stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack).
+
+### Add the Helm repository
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+```
+
+### Install the Helm Chart
+
+`helm install prometheus-stack prometheus-community/kube-prometheus-stack --namespace=monitoring --create-namespace`
 
 ## Linkding
 
