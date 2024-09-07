@@ -16,4 +16,4 @@ spec:
           service:
             name: linkding
             port: 
-              number: 6000
+              number: 9090
