@@ -8,5 +8,10 @@ spec:
   containers:
   - image: nginx
     name: nginx-yaml
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
