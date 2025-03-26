@@ -9,10 +9,3 @@ spec:
   containers:
   - image: nginx
     name: nginx-yaml
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-      requests:
-        memory: "64Mi"
-        cpu: "250m"
