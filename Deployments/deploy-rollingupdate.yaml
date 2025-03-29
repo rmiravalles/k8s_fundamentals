@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: test
-  name: test
+    app: rolling-test
+  name: rolling-test
 spec:
   replicas: 10
   selector:
     matchLabels:
-      app: test
+      app: rolling-test
   template:
     metadata:
       labels:
-        app: test
+        app: rolling-test
     spec:
       containers:
-        - image: httpd:alpine3.19
-          name: httpd
+        - image: nginx:1.26.3
+          name: nginx
   strategy:
     type: RollingUpdate
     rollingUpdate:
