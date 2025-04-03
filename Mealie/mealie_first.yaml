@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mealie-one
+  name: mealie-one
+  namespace: mealie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie-one
+  template:
+    metadata:
+      labels:
+        app: mealie-one
+    spec:
+      containers:
+        - image: ghcr.io/mealie-recipes/mealie:v2.8.0
+          name: mealie
